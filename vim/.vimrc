@@ -61,7 +61,7 @@ set noerrorbells visualbell t_vb=
 
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
-set mouse+=a
+" set mouse+=a
 
 " set tab for 4 spaces indent
 filetype plugin indent on
