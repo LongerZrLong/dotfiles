@@ -106,10 +106,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # kubectl
-alias kgp=kubectl get pods
-alias klf=kubectl logs -f
-alias kdn=kubectl describe nodes
-alias kdp=kubectl describe pods
+alias kgp="kubectl get pods"
+alias klf="kubectl logs -f"
+alias kdn="kubectl describe nodes"
+alias kdp="kubectl describe pods"
 
 # kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
