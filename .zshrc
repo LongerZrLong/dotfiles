@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 
 # kubectl
 alias kgp="kubectl get pods"
+alias kgs="kubectl get services"
 alias klf="kubectl logs -f"
 alias kdn="kubectl describe nodes"
 alias kdp="kubectl describe pods"
