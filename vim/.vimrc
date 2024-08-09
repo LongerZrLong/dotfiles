@@ -75,3 +75,21 @@ set expandtab
 " map jk to esc
 inoremap jk <Esc>
 
+" pathogen
+execute pathogen#infect()
+
+" fzf
+set rtp+=~/.fzf
+
+" ag
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+" YMC
+packadd YouCompleteMe
+let g:ycm_python_binary_path = 'python'
+set completeopt-=preview
+
+" Dracula
+colorscheme dracula
