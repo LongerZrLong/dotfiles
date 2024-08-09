@@ -29,3 +29,7 @@ map Q gq
 
 
 " Find more examples here: https://jb.gg/share-ideavimrc
+
+set ideajoin
+
+Plug 'tpope/vim-surround'
