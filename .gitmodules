@@ -1,0 +1,24 @@
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule ".vim/bundle/dracula"]
+	path = .vim/bundle/dracula
+	url = https://github.com/dracula/vim.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule ".vim/bundle/repeat.vim"]
+	path = .vim/bundle/repeat.vim
+	url = https://tpope.io/vim/repeat.git
+[submodule ".vim/bundle/surround.vim"]
+	path = .vim/bundle/surround.vim
+	url = https://tpope.io/vim/surround.git
+[submodule ".vim/bundle/vim-highlightedyank"]
+	path = .vim/bundle/vim-highlightedyank
+	url = https://github.com/machakann/vim-highlightedyank.git
+[submodule ".vim/pack/tpope/start/commentary"]
+	path = .vim/pack/tpope/start/commentary
+	url = https://tpope.io/vim/commentary.git
+[submodule ".vim/pack/YouCompleteMe/opt/YouCompleteMe"]
+	path = .vim/pack/YouCompleteMe/opt/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
