@@ -98,3 +98,6 @@ set completeopt-=preview
 " Dracula
 colorscheme dracula
 
+" highlightedyank
+let g:highlightedyank_highlight_duration = 500
+
