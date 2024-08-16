@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/home/zrlong/Playground/grpc-w-tf/venv'
 let g:netrw_dirhist_1='/home/zrlong/Playground/grpc-w-tf/code'
 let g:netrw_dirhist_0='/home/zrlong/.vim'
 let g:netrw_dirhist_9='/home/zrlong/Playground'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_6='/home/zrlong/Playground/k8s'
 let g:netrw_dirhist_5='/home/zrlong/Playground'
 let g:netrw_dirhist_4='/home/zrlong/.minikube/profiles'
 let g:netrw_dirhist_3='/home/zrlong/Playground/terraform/learn-terraform-modules-use/modules/aws-s3-static-website-bucket'
-let g:netrw_dirhist_2='/home/zrlong/Playground'

@@ -1,4 +1,9 @@
-"" Source your .vimrc
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Source your .vimrc
 source ~/.vimrc
 
 "" Disable sound
@@ -16,6 +21,18 @@ set incsearch
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 
+set ideajoin
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+" Surround plugin
+Plug 'tpope/vim-surround'
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -27,9 +44,3 @@ map Q gq
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
-
-" Find more examples here: https://jb.gg/share-ideavimrc
-
-set ideajoin
-
-Plug 'tpope/vim-surround'
