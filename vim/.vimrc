@@ -66,6 +66,10 @@ set noerrorbells visualbell t_vb=
 " sometimes be convenient.
 " set mouse+=a
 
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
 " set tab for 4 spaces indent
 filetype plugin indent on
 set tabstop=4
@@ -73,7 +77,7 @@ set shiftwidth=4
 set expandtab
 
 " map jk to esc
-inoremap jk <Esc>
+" inoremap jk <Esc>
 
 " pathogen
 execute pathogen#infect()
@@ -93,3 +97,4 @@ set completeopt-=preview
 
 " Dracula
 colorscheme dracula
+
