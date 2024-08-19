@@ -22,3 +22,6 @@
 [submodule ".vim/pack/YouCompleteMe/opt/YouCompleteMe"]
 	path = .vim/pack/YouCompleteMe/opt/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule ".vim/bundle/vim-polyglot"]
+	path = .vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
