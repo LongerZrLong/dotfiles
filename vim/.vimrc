@@ -95,8 +95,9 @@ packadd YouCompleteMe
 let g:ycm_python_binary_path = 'python'
 set completeopt-=preview
 
-" Dracula
-colorscheme dracula
+" colorscheme
+colorscheme gruvbox
+set background=dark
 
 " highlightedyank
 let g:highlightedyank_highlight_duration = 250

@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/ack.vim"]
 	path = .vim/bundle/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule ".vim/bundle/dracula"]
-	path = .vim/bundle/dracula
-	url = https://github.com/dracula/vim.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/preservim/nerdtree.git
@@ -22,6 +19,6 @@
 [submodule ".vim/pack/YouCompleteMe/opt/YouCompleteMe"]
 	path = .vim/pack/YouCompleteMe/opt/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
-[submodule ".vim/bundle/vim-polyglot"]
-	path = .vim/bundle/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
+[submodule ".vim/bundle/gruvbox"]
+	path = .vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
