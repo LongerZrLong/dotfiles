@@ -79,6 +79,13 @@ set expandtab
 " map jk to esc
 " inoremap jk <Esc>
 
+" auto match
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+
 " pathogen
 execute pathogen#infect()
 
