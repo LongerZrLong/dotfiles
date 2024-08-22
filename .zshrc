@@ -114,3 +114,12 @@ alias kdp="kubectl describe pods"
 
 # kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf to open a file
+alias f='vim "$(fzf)"'
+
+# fzf ctrl-j to accept
+export FZF_DEFAULT_OPTS='--bind ctrl-j:accept'
