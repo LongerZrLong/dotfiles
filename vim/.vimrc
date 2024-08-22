@@ -109,3 +109,6 @@ set background=dark
 " highlightedyank
 let g:highlightedyank_highlight_duration = 250
 
+" Enable the number of matches in seach
+set shortmess-=S
+
