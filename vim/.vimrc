@@ -121,7 +121,7 @@ set shortmess-=S
 
 " NERDTree
 nnoremap <C-q> :NERDTreeToggle<CR>
-nnoremap <C-m> :NERDTreeFind<CR>
+nnoremap <C-h> :NERDTreeFind<CR>
 
 " vim-fugitive
 nnoremap <C-g> :Gvdiffsplit<CR>
