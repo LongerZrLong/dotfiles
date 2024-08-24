@@ -90,7 +90,7 @@ inoremap ' ''<Esc>ha
 execute pathogen#infect()
 
 " fzf
-set rtp+=~/.fzf
+set rtp+=~/.dotfiles/.fzf
 
 " ag
 if executable('ag')
