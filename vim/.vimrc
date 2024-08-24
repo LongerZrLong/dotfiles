@@ -104,10 +104,12 @@ endif
 
 nnoremap <c-s> :Ack 
 
-" YMC
+" YouCompleteMe
 packadd YouCompleteMe
 let g:ycm_python_binary_path = 'python'
 set completeopt-=preview
+
+nnoremap <C-g> :YcmCompleter GoTo<CR>
 
 " colorscheme
 colorscheme gruvbox
@@ -124,5 +126,5 @@ nnoremap <C-q> :NERDTreeToggle<CR>
 nnoremap <C-t> :NERDTreeFind<CR>
 
 " vim-fugitive
-nnoremap <C-g> :Gvdiffsplit<CR>
+nnoremap gd :Gvdiffsplit<CR>
 
