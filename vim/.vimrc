@@ -55,9 +55,13 @@ set incsearch
 
 " Enable highlight search. Note that use :noh can disable the current highlight.
 set hlsearch
+nnoremap <C-h> :noh<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+
+" Disable command history
+nnoremap q: <nop>
 
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
@@ -91,11 +95,14 @@ execute pathogen#infect()
 
 " fzf
 set rtp+=~/.dotfiles/.fzf
+nnoremap <C-l> :FZF<CR>
 
-" ag
+" ack
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+
+nnoremap <c-s> :Ack 
 
 " YMC
 packadd YouCompleteMe
@@ -111,4 +118,11 @@ let g:highlightedyank_highlight_duration = 250
 
 " Enable the number of matches in seach
 set shortmess-=S
+
+" NERDTree
+nnoremap <C-q> :NERDTreeToggle<CR>
+nnoremap <C-m> :NERDTreeFind<CR>
+
+" vim-fugitive
+nnoremap <C-g> :Gvdiffsplit<CR>
 
