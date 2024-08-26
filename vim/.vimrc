@@ -17,6 +17,9 @@ syntax on
 " Disable the default Vim startup message.
 set shortmess+=I
 
+" Enable the number of matches in seach
+set shortmess-=S
+
 " Show line numbers.
 set number
 
@@ -117,9 +120,6 @@ set background=dark
 
 " highlightedyank
 let g:highlightedyank_highlight_duration = 250
-
-" Enable the number of matches in seach
-set shortmess-=S
 
 " NERDTree
 nnoremap <C-q> :NERDTreeToggle<CR>
