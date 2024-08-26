@@ -117,7 +117,6 @@ alias kdp="kubectl describe pods"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fzf to open a file
-alias f='vim "$(fzf)"'
+alias f="fzf"
+alias fv='vim "$(fzf)"'
 
