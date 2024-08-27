@@ -59,6 +59,7 @@ set incsearch
 " Enable highlight search. Note that use :noh can disable the current highlight.
 set hlsearch
 nnoremap <C-h> :noh<CR>
+nnoremap <C-l> :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
@@ -86,6 +87,10 @@ set expandtab
 " map jk to esc
 " inoremap jk <Esc>
 
+" recording
+noremap <Leader>q q
+noremap q <Nop>
+
 " auto match
 inoremap { {}<Esc>ha
 inoremap ( ()<Esc>ha
@@ -98,19 +103,22 @@ execute pathogen#infect()
 
 " fzf
 set rtp+=~/.dotfiles/.fzf
-nnoremap <C-l> :FZF<CR>
+nnoremap <C-n> :FZF<CR>
 
 " ack
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-nnoremap <c-s> :Ack 
+nnoremap <C-s> :Ack 
 
 " YouCompleteMe
 packadd YouCompleteMe
 let g:ycm_python_binary_path = 'python'
+
 set completeopt-=preview
+let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
+nmap <C-p> <plug>(YCMHover)
 
 nnoremap <C-g> :YcmCompleter GoTo<CR>
 
