@@ -60,15 +60,18 @@ vnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<cr>"""")
 set ignorecase " case-insensitive search when all characters lowercase
 set smartcase " case-sensitive if containing any capital letters
 
-set hlsearch
 set incsearch
+set hlsearch
 
+nnoremap <C-s> :set hlsearch! hlsearch?<CR>
+nnoremap / :set hlsearch<CR>/
 nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
-nnoremap <C-t> :set hlsearch! hlsearch?<CR>
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Unbind some useless/annoying default key bindings.
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-nnoremap q: <nop>   " disable command history
+nmap Q <Nop>
+nnoremap q: <nop>
+nmap K <Nop>
 
 " Disable audible bell.
 set noerrorbells visualbell t_vb=
@@ -79,7 +82,10 @@ set noerrorbells visualbell t_vb=
 " Show a few lines of context around the cursor.
 set scrolloff=5
 
-" set tab for 4 spaces indent
+" redo
+nnoremap U <C-r>
+
+" indent
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -87,19 +93,22 @@ set expandtab
 
 " write and exit
 nnoremap <Leader>q :q<cr>
-nnoremap <Leader>z :wq<cr>
 nnoremap <Leader>w :w<cr>
+nnoremap <Leader>z :wq<cr>
+nnoremap <Leader>x :q!<cr>
 
 " paste mode
 nnoremap <Leader>p :set paste!<CR>
 
 " recording
-noremap <Leader>Q q
+noremap Q q
 noremap q <Nop>
 
-" move cursor to front end
+" cursor movement
 noremap <C-h> ^
 noremap <C-l> $
+noremap <C-j> )
+noremap <C-k> (
 
 " auto match
 inoremap { {}<Esc>ha
@@ -107,9 +116,6 @@ inoremap ( ()<Esc>ha
 inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
-
-" redo
-nnoremap U <C-r>
 
 " pathogen
 execute pathogen#infect()
@@ -144,7 +150,7 @@ let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
 nnoremap <C-q> :NERDTreeToggle<CR>
-nnoremap <C-r> :NERDTreeFind<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
 
 " vim-fugitive
 nnoremap <Leader>c :Gvdiffsplit<CR>
