@@ -1,14 +1,7 @@
 " Comments in Vimscript start with a `"`.
 
-" If you open this file in Vim, it'll be syntax highlighted for you.
-
 " Vim is based on Vi. Setting `nocompatible` switches from the default
-" Vi-compatibility mode and enables useful Vim functionality. This
-" configuration option turns out not to be necessary for the file named
-" '~/.vimrc', because Vim automatically enters nocompatible mode if that file
-" is present. But we're including it here just in case this config file is
-" loaded some other way (e.g. saved as `foo`, and then Vim started with
-" `vim -u foo`).
+" Vi-compatibility mode and enables useful Vim functionality.
 set nocompatible
 
 " Turn on syntax highlighting.
@@ -20,16 +13,14 @@ set shortmess+=I
 " Enable the number of matches in seach
 set shortmess-=S
 
-" Show line numbers.
-set number
+" leader key
+nnoremap <SPACE> <Nop>
+let mapleader=" "
 
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
+" Line numbers
+set number
 set relativenumber
+nnoremap <Leader>n :set nu! rnu!<CR>
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
@@ -40,42 +31,49 @@ set laststatus=2
 " backspace over anything.
 set backspace=indent,eol,start
 
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
-set hidden
+" buffer
+set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
+" tab
+nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>1 1gt
+nnoremap <Leader>2 2gt
+nnoremap <Leader>3 3gt
+nnoremap <Leader>4 4gt
+nnoremap <Leader>5 5gt
+nnoremap <Leader>6 6gt
+nnoremap <Leader>7 7gt
+nnoremap <Leader>8 8gt
+nnoremap <Leader>9 9gt
 
-" Enable searching as you type, rather than waiting till you press enter.
+nnoremap <Leader>h gT<CR>
+nnoremap <Leader>l gt<CR>
+
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<cr>
+vnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<cr>"""")
+
+" search
+set ignorecase " case-insensitive search when all characters lowercase
+set smartcase " case-sensitive if containing any capital letters
+
+set hlsearch
 set incsearch
 
-" Enable highlight search. Note that use :noh can disable the current highlight.
-set hlsearch
-nnoremap <C-h> :noh<CR>
-nnoremap <C-l> :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
+nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
+nnoremap <C-t> :set hlsearch! hlsearch?<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+nnoremap q: <nop>   " disable command history
 
-" Disable command history
-nnoremap q: <nop>
-
-" Disable audible bell because it's annoying.
+" Disable audible bell.
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
+" Enable mouse support. Useful for scrolling.
 " set mouse+=a
 
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
+" Show a few lines of context around the cursor.
 set scrolloff=5
 
 " set tab for 4 spaces indent
@@ -84,12 +82,21 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" map jk to esc
-" inoremap jk <Esc>
+" write and exit
+nnoremap <Leader>q :q<cr>
+nnoremap <Leader>z :wq<cr>
+nnoremap <Leader>w :w<cr>
+
+" paste mode
+nnoremap <Leader>p :set paste!<CR>
 
 " recording
-noremap <Leader>q q
+noremap <Leader>Q q
 noremap q <Nop>
+
+" move cursor to front end
+noremap <C-h> ^
+noremap <C-l> $
 
 " auto match
 inoremap { {}<Esc>ha
@@ -97,6 +104,9 @@ inoremap ( ()<Esc>ha
 inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
+
+" redo
+nnoremap U <C-r>
 
 " pathogen
 execute pathogen#infect()
@@ -110,7 +120,7 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-nnoremap <C-s> :Ack 
+nnoremap <Leader>a :Ack! 
 
 " YouCompleteMe
 packadd YouCompleteMe
@@ -131,8 +141,10 @@ let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
 nnoremap <C-q> :NERDTreeToggle<CR>
-nnoremap <C-t> :NERDTreeFind<CR>
+nnoremap <C-r> :NERDTreeFind<CR>
 
 " vim-fugitive
-nnoremap gd :Gvdiffsplit<CR>
+nnoremap <Leader>c :Gvdiffsplit<CR>
+nnoremap <UP>   [c
+nnoremap <DOWN> ]c
 
