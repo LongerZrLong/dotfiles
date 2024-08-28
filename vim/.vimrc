@@ -33,6 +33,9 @@ set backspace=indent,eol,start
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
+map gn :bnext<cr>
+map gp :bprevious<cr>
+map gd :bdelete<cr>
 
 " tab
 nnoremap <Leader>t :tabnew<CR>
