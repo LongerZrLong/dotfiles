@@ -120,3 +120,7 @@ alias kdp="kubectl describe pods"
 alias f="fzf"
 alias fv='vim "$(fzf)"'
 
+# git
+git config --global core.editor "vim"
+git config --global diff.mnemonicPrefix true
+
