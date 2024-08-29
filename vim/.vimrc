@@ -33,9 +33,10 @@ set backspace=indent,eol,start
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
-map gn :bnext<cr>
-map gp :bprevious<cr>
-map gd :bdelete<cr>
+nnoremap gn :bnext<cr>
+nnoremap gp :bprevious<cr>
+nnoremap gd :bdelete<cr>
+nnoremap <Leader>; <C-^>
 
 " tab
 nnoremap <Leader>t :tabnew<CR>
@@ -53,7 +54,10 @@ nnoremap <Leader>h gT<CR>
 nnoremap <Leader>l gt<CR>
 
 au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<CR>
+nnoremap <silent> <Leader><Tab> :exe "tabn ".g:lasttab<CR>
+
+" window
+nnoremap <C-w>; <C-w>p
 
 " search
 set ignorecase " case-insensitive search when all characters lowercase
