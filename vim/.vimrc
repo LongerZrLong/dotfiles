@@ -22,7 +22,7 @@ set number
 set relativenumber
 nnoremap <Leader>n :set nu! rnu!<CR>
 
-" Always show the status line at the bottom, even if you only have one window open.
+" Always show the status line at the bottom, even if only one window is open
 set laststatus=2
 
 " The backspace key has slightly unintuitive behavior by default. For example,
@@ -53,8 +53,7 @@ nnoremap <Leader>h gT<CR>
 nnoremap <Leader>l gt<CR>
 
 au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<cr>
-vnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<cr>"""")
+nnoremap <silent> <Leader>; :exe "tabn ".g:lasttab<CR>
 
 " search
 set ignorecase " case-insensitive search when all characters lowercase
@@ -63,10 +62,9 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
-nnoremap <C-s> :set hlsearch! hlsearch?<CR>
-nnoremap / :set hlsearch<CR>/
-nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<bar>set hlsearch<CR>
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+nnoremap <C-r> :noh<CR>
+nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
+vnoremap / y:let @/='\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop>
