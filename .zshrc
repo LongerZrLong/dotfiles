@@ -124,3 +124,11 @@ alias fv='vim "$(fzf)"'
 git config --global core.editor "vim"
 git config --global diff.mnemonicPrefix true
 
+# eza
+alias ls='eza'
+alias l='eza -lbF'
+alias ld='eza -lD'
+alias lf='eza -lf --color=always | grep -v /'
+alias ll='eza -al --group-directories-first'
+alias lt='eza -al --sort=modified'
+
