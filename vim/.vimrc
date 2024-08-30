@@ -37,6 +37,7 @@ nnoremap gn :bnext<cr>
 nnoremap gp :bprevious<cr>
 nnoremap gd :bdelete<cr>
 nnoremap <Leader>; <C-^>
+nnoremap <Leader>b :buffers<CR>
 
 " tab
 nnoremap <Leader>t :tabnew<CR>
@@ -118,6 +119,9 @@ inoremap ( ()<Esc>ha
 inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
+
+" marks
+nnoremap <Leader>m :marks<CR>
 
 " pathogen
 execute pathogen#infect()

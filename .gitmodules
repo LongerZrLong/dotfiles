@@ -31,3 +31,6 @@
 [submodule ".fzf"]
 	path = .fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule ".vim/bundle/context.vim"]
+	path = .vim/bundle/context.vim
+	url = https://github.com/wellle/context.vim.git
