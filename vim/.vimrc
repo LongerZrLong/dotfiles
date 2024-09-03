@@ -110,8 +110,8 @@ noremap q <Nop>
 " cursor movement
 noremap <C-h> ^
 noremap <C-l> $
-noremap <C-j> )
-noremap <C-k> (
+noremap <C-j> 5j
+noremap <C-k> 5k
 
 " auto match
 inoremap { {}<Esc>ha
