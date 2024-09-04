@@ -112,6 +112,7 @@ noremap <C-h> ^
 noremap <C-l> $
 noremap <C-j> 5j
 noremap <C-k> 5k
+noremap <C-s> %
 
 " auto match
 inoremap { {}<Esc>ha
