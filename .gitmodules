@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/context.vim"]
 	path = .vim/bundle/context.vim
 	url = https://github.com/wellle/context.vim.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
