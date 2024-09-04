@@ -74,7 +74,6 @@ vnoremap / y:let @/='\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 " Unbind some useless/annoying default key bindings.
 nmap Q <Nop>
 nnoremap q: <nop>
-nmap K <Nop>
 
 " Disable audible bell.
 set noerrorbells visualbell t_vb=
@@ -82,8 +81,13 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support. Useful for scrolling.
 " set mouse+=a
 
-" Show a few lines of context around the cursor.
-set scrolloff=5
+" join
+nnoremap <Leader>j J
+
+" scroll
+set scrolloff=5 " Show a few lines of context around the cursor.
+nnoremap J 5<C-e>
+nnoremap K 5<C-y>
 
 " redo
 nnoremap U <C-r>
