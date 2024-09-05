@@ -150,7 +150,6 @@ endif
 nnoremap <Leader>a :Ack! 
 
 " YouCompleteMe
-packadd YouCompleteMe
 let g:ycm_python_binary_path = 'python'
 
 set completeopt-=preview

@@ -14,10 +14,10 @@
 	path = .vim/bundle/vim-highlightedyank
 	url = https://github.com/machakann/vim-highlightedyank.git
 [submodule ".vim/pack/tpope/start/commentary"]
-	path = .vim/pack/tpope/start/commentary
+	path = .vim/bundle/commentary
 	url = https://tpope.io/vim/commentary.git
 [submodule ".vim/pack/YouCompleteMe/opt/YouCompleteMe"]
-	path = .vim/pack/YouCompleteMe/opt/YouCompleteMe
+	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule ".vim/bundle/gruvbox"]
 	path = .vim/bundle/gruvbox
