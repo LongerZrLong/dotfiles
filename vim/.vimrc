@@ -172,10 +172,11 @@ nnoremap <Leader>f :NERDTreeFind<CR>
 
 " vim-fugitive
 nnoremap <Leader>c :Gvdiffsplit<CR>
+nnoremap <Leader>b :Git blame<CR>
 nnoremap <UP>   [c
 nnoremap <DOWN> ]c
 
 " CtrlP
-let g:ctrlp_map = '<C-p>'
+let g:ctrlp_map = '<C-e>'
 let g:ctrlp_cmd = 'CtrlPBuffer'
 
