@@ -13,6 +13,13 @@ set shortmess+=I
 " Enable the number of matches in seach
 set shortmess-=S
 
+" helper function definition
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+
 " leader key
 nnoremap <SPACE> <Nop>
 let mapleader=" "
@@ -37,7 +44,6 @@ nnoremap gn :bnext<cr>
 nnoremap gp :bprevious<cr>
 nnoremap gd :bdelete<cr>
 nnoremap <Leader>; <C-^>
-nnoremap <Leader>b :buffers<CR>
 
 " tab
 nnoremap <Leader>t :tabnew<CR>
@@ -71,9 +77,9 @@ nnoremap <C-r> :noh<CR>
 nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
 vnoremap / y:let @/='\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 
-" Unbind some useless/annoying default key bindings.
-nmap Q <Nop>
-nnoremap q: <nop>
+" recording
+noremap Q q
+noremap q <Nop>
 
 " Disable audible bell.
 set noerrorbells visualbell t_vb=
@@ -107,10 +113,6 @@ nnoremap <Leader>x :q!<cr>
 " paste mode
 nnoremap <Leader>p :set paste!<CR>
 
-" recording
-noremap Q q
-noremap q <Nop>
-
 " cursor movement
 noremap <C-h> ^
 noremap <C-l> $
@@ -127,6 +129,11 @@ inoremap ' ''<Esc>ha
 
 " marks
 nnoremap <Leader>m :marks<CR>
+
+" fold
+call SetupCommandAlias("fmm", "setlocal foldmethod=manual")
+call SetupCommandAlias("fmi", "setlocal foldmethod=indent")
+call SetupCommandAlias("fms", "setlocal foldmethod=syntax")
 
 " pathogen
 execute pathogen#infect()
