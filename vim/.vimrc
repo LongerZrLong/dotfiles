@@ -166,7 +166,7 @@ set background=dark
 let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
-nnoremap <C-q> :NERDTreeToggle<CR>
+nnoremap <C-q> :NERDTreeFocus<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
 
 " vim-fugitive
