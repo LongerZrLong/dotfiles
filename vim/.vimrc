@@ -147,7 +147,8 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-nnoremap <Leader>a :Ack! 
+nnoremap <Leader>a :Ack!<CR>
+vnoremap <Leader>a y:Ack! -Q "<C-r>=@"<CR>"<CR>
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
