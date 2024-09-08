@@ -105,6 +105,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# vim
+alias v="vim"
+
 # kubectl
 alias kgp="kubectl get pods"
 alias kgs="kubectl get services"

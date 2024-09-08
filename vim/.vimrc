@@ -22,7 +22,7 @@ endfun
 
 " leader key
 nnoremap <SPACE> <Nop>
-let mapleader=" "
+let mapleader=' '
 
 " Line numbers
 set number
@@ -61,7 +61,7 @@ nnoremap <Leader>h gT<CR>
 nnoremap <Leader>l gt<CR>
 
 au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <silent> <Leader><Tab> :exe "tabn ".g:lasttab<CR>
+nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<CR>
 
 " window
 nnoremap <C-w>; <C-w>p
@@ -74,8 +74,9 @@ set incsearch
 set hlsearch
 
 nnoremap <C-r> :noh<CR>
-nnoremap <Leader>s :let @/='\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
-vnoremap / y:let @/='\V'.escape(@", '/\')<Bar>set hlsearch<CR>
+nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
+vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
+vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 
 " recording
 noremap Q q
@@ -131,9 +132,9 @@ inoremap ' ''<Esc>ha
 nnoremap <Leader>m :marks<CR>
 
 " fold
-call SetupCommandAlias("fmm", "setlocal foldmethod=manual")
-call SetupCommandAlias("fmi", "setlocal foldmethod=indent")
-call SetupCommandAlias("fms", "setlocal foldmethod=syntax")
+call SetupCommandAlias('fmm', 'setlocal foldmethod=manual')
+call SetupCommandAlias('fmi', 'setlocal foldmethod=indent')
+call SetupCommandAlias('fms', 'setlocal foldmethod=syntax')
 
 " pathogen
 execute pathogen#infect()
@@ -147,8 +148,8 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-nnoremap <Leader>a :Ack!<CR>
-vnoremap <Leader>a y:Ack! -Q "<C-r>=@"<CR>"<CR>
+nnoremap <Leader>a :Ack! -Q -s '<cword>'<CR>
+vnoremap <Leader>a y:Ack! -Q -s '<C-r>=@"<CR>'<CR>
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
@@ -175,6 +176,10 @@ nnoremap <Leader>c :Gvdiffsplit<CR>
 nnoremap <Leader>b :Git blame<CR>
 nnoremap <UP>   [c
 nnoremap <DOWN> ]c
+
+call SetupCommandAlias('Gd' , 'Git diff')
+call SetupCommandAlias('Gds', 'Git diff --staged')
+call SetupCommandAlias('Gst', 'Git status')
 
 " CtrlP
 let g:ctrlp_map = '<C-e>'
