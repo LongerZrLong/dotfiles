@@ -38,6 +38,9 @@ set laststatus=2
 " backspace over anything.
 set backspace=indent,eol,start
 
+" unbind useless
+noremap K <Nop>
+
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap gn :bnext<cr>
@@ -136,13 +139,13 @@ execute pathogen#infect()
 set rtp+=~/.dotfiles/.fzf
 nnoremap <C-n> :FZF<CR>
 
-" ack
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
+command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
+nnoremap <Leader>a :Agc <C-r><C-w><CR>
+vnoremap <Leader>a y:Agc <C-r>=@"<CR><CR>
 
-nnoremap <Leader>a :Ack! -Q -s '<cword>'<CR>
-vnoremap <Leader>a y:Ack! -Q -s '<C-r>=@"<CR>'<CR>
+" Do to following mapping at start up b/c <C-e> somehow
+" gets overwritten if mapped in vimrc
+autocmd VimEnter * nnoremap <C-e> :Buffers<CR>
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
@@ -173,8 +176,4 @@ nnoremap <DOWN> ]c
 call SetupCommandAlias('Gd' , 'Git diff')
 call SetupCommandAlias('Gds', 'Git diff --staged')
 call SetupCommandAlias('Gst', 'Git status')
-
-" CtrlP
-let g:ctrlp_map = '<C-e>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
 

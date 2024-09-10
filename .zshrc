@@ -120,6 +120,20 @@ alias kdp="kubectl describe pods"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if command -v fd &> /dev/null
+then
+    # setting fd as the default source for fzf if fd exists
+    export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+export FZF_DEFAULT_OPTS="--preview 'bat --color=always --style=numbers --line-range=:500 {}' \
+--bind 'ctrl-p:preview-up,ctrl-n:preview-down' \
+--bind 'ctrl-b:preview-page-up,ctrl-f:preview-page-down' \
+--bind 'ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down' \
+--bind 'ctrl-y:preview-top,ctrl-e:preview-bottom'"
+
 alias f="fzf"
 alias fv='vim "$(fzf)"'
 
@@ -134,4 +148,7 @@ alias ld='eza -lD'
 alias lf='eza -lf --color=always | grep -v /'
 alias ll='eza -al --group-directories-first'
 alias lt='eza -al --sort=modified'
+
+# bat
+alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 
