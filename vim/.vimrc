@@ -39,6 +39,7 @@ set laststatus=2
 set backspace=indent,eol,start
 
 " unbind useless
+noremap Q <Nop>
 noremap K <Nop>
 
 " buffer
@@ -82,8 +83,14 @@ vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 
 " recording
-noremap Q q
 noremap q <Nop>
+noremap <Leader>r q
+
+" Do to following mapping at start up b/c <C-y> somehow
+" gets overwritten if mapped in vimrc
+autocmd VimEnter * nnoremap <C-y> @q
+
+vnoremap <C-y> :norm! @q<CR>
 
 " Disable audible bell.
 set noerrorbells visualbell t_vb=
