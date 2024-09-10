@@ -121,13 +121,6 @@ noremap <C-j> 5j
 noremap <C-k> 5k
 noremap <C-s> %
 
-" auto match
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-
 " marks
 nnoremap <Leader>m :marks<CR>
 
