@@ -70,12 +70,16 @@ git config --global core.editor "vim"
 git config --global diff.mnemonicPrefix true
 
 # eza
-alias ls='eza'
-alias l='eza -lbF'
-alias ld='eza -lD'
-alias lf='eza -lf --color=always | grep -v /'
-alias ll='eza -al --group-directories-first'
-alias lt='eza -al --sort=modified'
+if command -v eza &> /dev/null
+then
+    # using eza instead of ls if eza exists
+    alias ls='eza'
+    alias l='eza -lbF'
+    alias ld='eza -lD'
+    alias lf='eza -lf --color=always | grep -v /'
+    alias ll='eza -al --group-directories-first'
+    alias lt='eza -al --sort=modified'
+fi
 
 # bat
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
