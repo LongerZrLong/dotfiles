@@ -17,6 +17,12 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# load the user specific config if available
+if [ -e ~/.zshrc_extra ]
+then
+    source ~/.zshrc_extra
+fi
+
 # vim
 alias v="vim"
 
