@@ -60,6 +60,7 @@ nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
+nnoremap <Leader>0 :tablast<CR>
 
 nnoremap <Leader>h gT<CR>
 nnoremap <Leader>l gt<CR>
