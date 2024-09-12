@@ -78,17 +78,17 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
-nnoremap <C-r> :noh<CR>
+nnoremap <Leader>r :noh<CR>
 nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
 vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
 
 " recording
 noremap q <Nop>
-noremap <Leader>r q
+noremap <C-r> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 2) <Bar> endif <CR>
 
-" Do to following mapping at start up b/c <C-y> somehow
-" gets overwritten if mapped in vimrc
+" Do the following mapping at start up b/c <C-y> somehow
+" gets overwritten if mapped in the .vimrc
 autocmd VimEnter * nnoremap <C-y> @q
 
 vnoremap <C-y> :norm! @q<CR>
@@ -96,8 +96,8 @@ vnoremap <C-y> :norm! @q<CR>
 " Disable audible bell.
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. Useful for scrolling.
-" set mouse+=a
+" Toggle mouse support. Useful for scrolling.
+noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> endif<CR>
 
 " join
 nnoremap <Leader>j J
@@ -122,8 +122,15 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>z :wq<cr>
 nnoremap <Leader>x :q!<cr>
 
-" paste mode
-nnoremap <Leader>p :set paste!<CR>
+" copy paste
+if has('clipboard')
+  set clipboard=""    " disable auto yank into * register when exiting visual mode
+  noremap <Leader>Y "+Y
+  noremap <Leader>y "+y
+  nnoremap <Leader>p :set paste<CR>"+gp:set nopaste<CR>
+else
+  echo "Install vim-gtk or other similar packages for the clipboard feature."
+endif
 
 " cursor movement
 noremap <C-h> ^

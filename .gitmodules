@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/preservim/nerdtree.git
-[submodule ".vim/bundle/repeat.vim"]
-	path = .vim/bundle/repeat.vim
-	url = https://tpope.io/vim/repeat.git
 [submodule ".vim/bundle/surround.vim"]
 	path = .vim/bundle/surround.vim
 	url = https://tpope.io/vim/surround.git
