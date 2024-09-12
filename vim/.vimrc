@@ -127,7 +127,8 @@ if has('clipboard')
   set clipboard=""    " disable auto yank into * register when exiting visual mode
   noremap <Leader>Y "+Y
   noremap <Leader>y "+y
-  nnoremap <Leader>p :set paste<CR>"+gp:set nopaste<CR>
+  nnoremap <C-p> :set paste<CR>"+gp:set nopaste<CR>
+  inoremap <C-p> <C-o>:set paste<CR><C-o>"+gP<C-o>:set nopaste<CR>
 else
   echo "Install vim-gtk or other similar packages for the clipboard feature."
 endif
@@ -157,6 +158,7 @@ nnoremap <C-n> :FZF<CR>
 command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
 nnoremap <Leader>a :Agc <C-r><C-w><CR>
 vnoremap <Leader>a y:Agc <C-r>=@"<CR><CR>
+nnoremap <Leader>A :Ag 
 
 " Do to following mapping at start up b/c <C-e> somehow
 " gets overwritten if mapped in vimrc
@@ -167,9 +169,12 @@ let g:ycm_python_binary_path = 'python'
 
 set completeopt-=preview
 let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
-nmap <C-p> <plug>(YCMHover)
+nmap <Leader>p <plug>(YCMHover)
 
 nnoremap <C-g> :YcmCompleter GoTo<CR>
+
+let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-k>']
 
 " colorscheme
 colorscheme gruvbox
@@ -185,10 +190,16 @@ nnoremap <Leader>f :NERDTreeFind<CR>
 " vim-fugitive
 nnoremap <Leader>c :Gvdiffsplit<CR>
 nnoremap <Leader>b :Git blame<CR>
+nnoremap <Leader>u :Git restore --staged %<CR>
+nnoremap <Leader>U :Git add %<CR>
+nnoremap <Leader>o :Gread<CR>
+nnoremap <Leader>O :Gread HEAD:%<CR>
+
 nnoremap <UP>   [c
 nnoremap <DOWN> ]c
 
 call SetupCommandAlias('Gd' , 'Git diff')
 call SetupCommandAlias('Gds', 'Git diff --staged')
-call SetupCommandAlias('Gst', 'Git status')
+call SetupCommandAlias('Gau', 'Git add --update')
+call SetupCommandAlias('Grs', 'Git restore')
 
