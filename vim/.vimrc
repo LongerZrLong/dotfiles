@@ -4,6 +4,9 @@
 " Vi-compatibility mode and enables useful Vim functionality.
 set nocompatible
 
+" Disable audible bell.
+set noerrorbells visualbell t_vb=
+
 " Turn on syntax highlighting.
 syntax on
 
@@ -27,7 +30,7 @@ let mapleader=' '
 " Line numbers
 set number
 set relativenumber
-nnoremap <Leader>n :set nu! rnu!<CR>
+nnoremap <Leader>n :set nu! rnu!<Cr>
 
 " Always show the status line at the bottom, even if only one window is open
 set laststatus=2
@@ -44,13 +47,13 @@ noremap K <Nop>
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
-nnoremap gn :bnext<cr>
-nnoremap gp :bprevious<cr>
-nnoremap gd :bdelete<cr>
+nnoremap gn :bnext<Cr>
+nnoremap gp :bprevious<Cr>
+nnoremap gd :bdelete<Cr>
 nnoremap <Leader>; <C-^>
 
 " tab
-nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>t :tabnew<Cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
@@ -60,13 +63,13 @@ nnoremap <Leader>6 6gt
 nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
-nnoremap <Leader>0 :tablast<CR>
+nnoremap <Leader>0 :tablast<Cr>
 
-nnoremap <Leader>h gT<CR>
-nnoremap <Leader>l gt<CR>
+nnoremap <Leader>h gT<Cr>
+nnoremap <Leader>l gt<Cr>
 
 au TabLeave * let g:lasttab = tabpagenr()
-nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<CR>
+nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
 
 " window
 nnoremap <C-w>; <C-w>p
@@ -78,26 +81,23 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
-nnoremap <Leader>r :noh<CR>
-nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<CR>
-vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
-vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<CR>
+nnoremap <Leader>r :noh<Cr>
+nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
+vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
+vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 " recording
 noremap q <Nop>
-noremap <C-r> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 2) <Bar> endif <CR>
+noremap <C-r> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 1) <Bar> endif <Cr>
 
 " Do the following mapping at start up b/c <C-y> somehow
 " gets overwritten if mapped in the .vimrc
 autocmd VimEnter * nnoremap <C-y> @q
 
-vnoremap <C-y> :norm! @q<CR>
-
-" Disable audible bell.
-set noerrorbells visualbell t_vb=
+vnoremap <C-y> :normal! @q<Cr>
 
 " Toggle mouse support. Useful for scrolling.
-noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> endif<CR>
+noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> endif <Cr>
 
 " join
 nnoremap <Leader>j J
@@ -117,18 +117,20 @@ set shiftwidth=4
 set expandtab
 
 " write and exit
-nnoremap <Leader>q :q<cr>
-nnoremap <Leader>w :w<cr>
-nnoremap <Leader>z :wq<cr>
-nnoremap <Leader>x :q!<cr>
+nnoremap <Leader>q :q<Cr>
+nnoremap <Leader>w :w<Cr>
+nnoremap <Leader>z :wq<Cr>
+nnoremap <Leader>x :q!<Cr>
 
 " copy paste
 if has('clipboard')
   set clipboard=""    " disable auto yank into * register when exiting visual mode
   noremap <Leader>Y "+Y
   noremap <Leader>y "+y
-  nnoremap <C-p> :set paste<CR>"+gp:set nopaste<CR>
-  inoremap <C-p> <C-o>:set paste<CR><C-o>"+gP<C-o>:set nopaste<CR>
+
+  nnoremap <C-p> "+gP
+  vnoremap <C-p> "+gp
+  inoremap <C-p> <C-r>+
 else
   echo "Install vim-gtk or other similar packages for the clipboard feature."
 endif
@@ -141,7 +143,7 @@ noremap <C-k> 5k
 noremap <C-s> %
 
 " marks
-nnoremap <Leader>m :marks<CR>
+nnoremap <Leader>m :marks<Cr>
 
 " fold
 call SetupCommandAlias('fmm', 'setlocal foldmethod=manual')
@@ -153,16 +155,16 @@ execute pathogen#infect()
 
 " fzf
 set rtp+=~/.dotfiles/.fzf
-nnoremap <C-n> :FZF<CR>
+nnoremap <C-n> :FZF<Cr>
 
 command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
-nnoremap <Leader>a :Agc <C-r><C-w><CR>
-vnoremap <Leader>a y:Agc <C-r>=@"<CR><CR>
+nnoremap <Leader>a :Agc <C-r><C-w><Cr>
+vnoremap <Leader>a y:Agc <C-r>=@"<Cr><Cr>
 nnoremap <Leader>A :Ag 
 
 " Do to following mapping at start up b/c <C-e> somehow
 " gets overwritten if mapped in vimrc
-autocmd VimEnter * nnoremap <C-e> :Buffers<CR>
+autocmd VimEnter * nnoremap <C-e> :Buffers<Cr>
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
@@ -171,7 +173,7 @@ set completeopt-=preview
 let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
 nmap <Leader>p <plug>(YCMHover)
 
-nnoremap <C-g> :YcmCompleter GoTo<CR>
+nnoremap <C-g> :YcmCompleter GoTo<Cr>
 
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
@@ -184,16 +186,16 @@ set background=dark
 let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
-nnoremap <C-q> :NERDTreeFocus<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
+nnoremap <C-q> :NERDTreeFocus<Cr>
+nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " vim-fugitive
-nnoremap <Leader>c :Gvdiffsplit<CR>
-nnoremap <Leader>b :Git blame<CR>
-nnoremap <Leader>u :Git restore --staged %<CR>
-nnoremap <Leader>U :Git add %<CR>
-nnoremap <Leader>o :Gread<CR>
-nnoremap <Leader>O :Gread HEAD:%<CR>
+nnoremap <Leader>c :Gvdiffsplit<Cr>
+nnoremap <Leader>b :Git blame<Cr>
+nnoremap <Leader>u :Git restore --staged %<Cr>
+nnoremap <Leader>U :Git add %<Cr>
+nnoremap <Leader>o :Gread<Cr>
+nnoremap <Leader>O :Gread HEAD:%<Cr>
 
 nnoremap <UP>   [c
 nnoremap <DOWN> ]c
