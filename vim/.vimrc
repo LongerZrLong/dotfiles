@@ -13,7 +13,7 @@ syntax on
 " Disable the default Vim startup message.
 set shortmess+=I
 
-" Enable the number of matches in seach
+" Enable the number of matches in search
 set shortmess-=S
 
 " helper function definition
@@ -47,9 +47,7 @@ noremap K <Nop>
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
-nnoremap gn :bnext<Cr>
-nnoremap gp :bprevious<Cr>
-nnoremap gd :bdelete<Cr>
+nnoremap <Leader>k :bdelete<Cr>
 nnoremap <Leader>; <C-^>
 
 " tab
@@ -115,11 +113,15 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+noremap <Leader>i =
 
 " write and exit
 nnoremap <Leader>q :q<Cr>
+nnoremap <Leader>Q :qa!<Cr>
 nnoremap <Leader>w :w<Cr>
+nnoremap <Leader>W :wa<Cr>
 nnoremap <Leader>z :wq<Cr>
+nnoremap <Leader>Z :wqa<Cr>
 nnoremap <Leader>x :q!<Cr>
 
 " copy paste
@@ -128,12 +130,19 @@ if has('clipboard')
   noremap <Leader>Y "+Y
   noremap <Leader>y "+y
 
-  nnoremap <C-p> "+gP
-  vnoremap <C-p> "+gp
-  inoremap <C-p> <C-r>+
+  nnoremap <Leader>p "+gp
+  nnoremap <Leader>P "+gP
+  vnoremap <Leader>p "+gp
+  vnoremap <Leader>P "+gP
 else
   echo "Install vim-gtk or other similar packages for the clipboard feature."
 endif
+
+noremap p "0p
+noremap P "0P
+inoremap <C-p> <C-r>0
+
+vnoremap x "0ygvd
 
 " cursor movement
 noremap <C-h> ^
@@ -146,12 +155,27 @@ noremap <C-s> %
 nnoremap <Leader>m :marks<Cr>
 
 " fold
-call SetupCommandAlias('fmm', 'setlocal foldmethod=manual')
-call SetupCommandAlias('fmi', 'setlocal foldmethod=indent')
-call SetupCommandAlias('fms', 'setlocal foldmethod=syntax')
+call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
+call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
+call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
+
+nnoremap gm :setlocal foldmethod=manual<Cr>
+nnoremap gi :setlocal foldmethod=indent<Cr>
+nnoremap gs :setlocal foldmethod=syntax<Cr>
 
 " pathogen
 execute pathogen#infect()
+
+" colorscheme
+colorscheme gruvbox
+set background=dark
+
+" highlightedyank
+let g:highlightedyank_highlight_duration = 250
+
+" NERDTree
+nnoremap <C-q> :NERDTreeFocus<Cr>
+nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " fzf
 set rtp+=~/.dotfiles/.fzf
@@ -171,26 +195,21 @@ let g:ycm_python_binary_path = 'python'
 
 set completeopt-=preview
 let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
-nmap <Leader>p <plug>(YCMHover)
+nmap <C-p> <plug>(YCMHover)
 
 nnoremap <C-g> :YcmCompleter GoTo<Cr>
 
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 
-" colorscheme
-colorscheme gruvbox
-set background=dark
-
-" highlightedyank
-let g:highlightedyank_highlight_duration = 250
-
-" NERDTree
-nnoremap <C-q> :NERDTreeFocus<Cr>
-nnoremap <Leader>f :NERDTreeFind<Cr>
+call SetupCommandAlias('yfx', 'YcmCompleter FixIt')
+call SetupCommandAlias('yfm', 'YcmCompleter FixIt')
+call SetupCommandAlias('yrr', 'YcmCompleter RefactorRename')
 
 " vim-fugitive
+nnoremap <Leader>g :Git<Cr>
 nnoremap <Leader>c :Gvdiffsplit<Cr>
+nnoremap <Leader>C :Gvdiffsplit HEAD<Cr>
 nnoremap <Leader>b :Git blame<Cr>
 nnoremap <Leader>u :Git restore --staged %<Cr>
 nnoremap <Leader>U :Git add %<Cr>
@@ -200,6 +219,7 @@ nnoremap <Leader>O :Gread HEAD:%<Cr>
 nnoremap <UP>   [c
 nnoremap <DOWN> ]c
 
+call SetupCommandAlias('Gv' , 'Gvdiffsplit')
 call SetupCommandAlias('Gd' , 'Git diff')
 call SetupCommandAlias('Gds', 'Git diff --staged')
 call SetupCommandAlias('Gau', 'Git add --update')
