@@ -24,6 +24,9 @@ then
     source ~/.zshrc_extra
 fi
 
+# system
+alias fj="fg"
+
 # vim
 alias v="vim"
 
@@ -48,6 +51,8 @@ then
     # setting fd as the default source for fzf if fd exists
     export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+else
+    echo "Install fd-find for better fzf experience."
 fi
 
 PREVIEW_NAVIGATION_BIND=" \
@@ -80,6 +85,8 @@ then
     alias lf='eza -lf --color=always | grep -v /'
     alias ll='eza -al --group-directories-first'
     alias lt='eza -al --sort=modified'
+else
+    echo "Install eza for better ls experience."
 fi
 
 # bat

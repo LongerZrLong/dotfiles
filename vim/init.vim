@@ -181,7 +181,9 @@ nnoremap <Leader>f :NERDTreeFind<Cr>
 map <Leader><Leader> :noh<Cr> <Plug>(easymotion-prefix)
 
 " fzf
-set rtp+=~/.dotfiles/.fzf
+let fzf_home = fnamemodify(system('which fzf'), ':h:h')
+let &runtimepath .= ','.fzf_home
+
 nnoremap <C-n> :FZF<Cr>
 
 command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
@@ -206,7 +208,7 @@ let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 
 call SetupCommandAlias('yfx', 'YcmCompleter FixIt')
-call SetupCommandAlias('yfm', 'YcmCompleter FixIt')
+call SetupCommandAlias('yfm', 'YcmCompleter Format')
 call SetupCommandAlias('yrr', 'YcmCompleter RefactorRename')
 
 " vim-fugitive
