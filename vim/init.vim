@@ -144,6 +144,16 @@ inoremap <C-p> <C-r>0
 
 vnoremap x "0ygvd
 
+" cursor
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
+
+:autocmd InsertEnter,InsertLeave * set cul!
+
 " cursor movement
 noremap <C-h> ^
 noremap <C-l> $
@@ -165,6 +175,9 @@ nnoremap gs :setlocal foldmethod=syntax<Cr>
 
 " pathogen
 execute pathogen#infect()
+
+" netrw
+let g:netrw_home=$XDG_STATE_HOME.'/vim'
 
 " colorscheme
 colorscheme gruvbox
