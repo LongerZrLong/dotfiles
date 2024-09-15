@@ -177,6 +177,9 @@ let g:highlightedyank_highlight_duration = 250
 nnoremap <C-q> :NERDTreeFocus<Cr>
 nnoremap <Leader>f :NERDTreeFind<Cr>
 
+" easymotion
+map <Leader><Leader> :noh<Cr> <Plug>(easymotion-prefix)
+
 " fzf
 set rtp+=~/.dotfiles/.fzf
 nnoremap <C-n> :FZF<Cr>
