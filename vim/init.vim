@@ -185,6 +185,9 @@ execute pathogen#infect()
 let g:netrw_home=$XDG_STATE_HOME.'/vim'
 
 " colorscheme
+let g:gruvbox_invert_selection=0
+:autocmd VimEnter * hi Search ctermfg=LIGHTGREY ctermbg=DARKGREY
+
 colorscheme gruvbox
 set background=dark
 
