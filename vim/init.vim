@@ -71,6 +71,11 @@ nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
 
 " window
 nnoremap <C-w>; <C-w>p
+nnoremap <C-w>> <C-w>20>
+nnoremap <C-w>< <C-w>20<
+nnoremap <C-w>- <C-w>10-
+nnoremap <C-w>_ <C-w>10+
+nnoremap <C-w>+ <C-w>_
 
 " search
 set ignorecase " case-insensitive search when all characters lowercase
