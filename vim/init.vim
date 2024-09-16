@@ -14,7 +14,7 @@ syntax on
 set shortmess+=I
 
 " Enable the number of matches in search
-set shortmess-=S
+" set shortmess-=S
 
 " helper function definition
 fun! SetupCommandAlias(from, to)
@@ -30,7 +30,6 @@ let mapleader=' '
 " Line numbers
 set number
 set relativenumber
-nnoremap <Leader>n :set nu! rnu!<Cr>
 
 " Always show the status line at the bottom, even if only one window is open
 set laststatus=2
@@ -184,9 +183,6 @@ let g:netrw_home=$XDG_STATE_HOME.'/vim'
 colorscheme gruvbox
 set background=dark
 
-" air-line
-
-
 " highlightedyank
 let g:highlightedyank_highlight_duration = 250
 
@@ -196,6 +192,9 @@ nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " easymotion
 map <Leader><Leader> :noh<Cr> <Plug>(easymotion-prefix)
+
+" air-line
+set noshowmode  " air-line will show the mode
 
 " fzf
 let fzf_home = fnamemodify(system('which fzf'), ':h:h')
