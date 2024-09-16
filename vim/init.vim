@@ -48,6 +48,7 @@ noremap K <Nop>
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bdelete<Cr>
+nnoremap <Leader>K :%bd <Bar> e#<Cr>
 nnoremap <Leader>; <C-^>
 
 " tab
@@ -124,7 +125,7 @@ nnoremap <Leader>z :wq<Cr>
 nnoremap <Leader>Z :wqa<Cr>
 nnoremap <Leader>x :q!<Cr>
 
-" copy paste
+" copy cut paste
 if has('clipboard')
   set clipboard=""    " disable auto yank into * register when exiting visual mode
   noremap <Leader>Y "+Y
@@ -142,7 +143,8 @@ noremap p "0p
 noremap P "0P
 inoremap <C-p> <C-r>0
 
-vnoremap x "0ygvd
+noremap x "0d
+noremap X "0D
 
 " cursor
 let &t_SI = "\e[6 q"
@@ -169,9 +171,8 @@ call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
 
-nnoremap gm :setlocal foldmethod=manual<Cr>
-nnoremap gi :setlocal foldmethod=indent<Cr>
-nnoremap gs :setlocal foldmethod=syntax<Cr>
+set foldmethod=indent
+autocmd BufWinEnter * normal zR
 
 " pathogen
 execute pathogen#infect()
@@ -182,6 +183,9 @@ let g:netrw_home=$XDG_STATE_HOME.'/vim'
 " colorscheme
 colorscheme gruvbox
 set background=dark
+
+" air-line
+
 
 " highlightedyank
 let g:highlightedyank_highlight_duration = 250
@@ -220,9 +224,13 @@ nnoremap <C-g> :YcmCompleter GoTo<Cr>
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 
-call SetupCommandAlias('yfx', 'YcmCompleter FixIt')
-call SetupCommandAlias('yfm', 'YcmCompleter Format')
-call SetupCommandAlias('yrr', 'YcmCompleter RefactorRename')
+call SetupCommandAlias('Yfx', 'YcmCompleter FixIt')
+call SetupCommandAlias('Yfm', 'YcmCompleter Format')
+call SetupCommandAlias('Yrr', 'YcmCompleter RefactorRename')
+
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 " vim-fugitive
 nnoremap <Leader>g :Git<Cr>
@@ -242,4 +250,13 @@ call SetupCommandAlias('Gd' , 'Git diff')
 call SetupCommandAlias('Gds', 'Git diff --staged')
 call SetupCommandAlias('Gau', 'Git add --update')
 call SetupCommandAlias('Grs', 'Git restore')
+
+" ale
+let g:ale_disable_lsp = 1
+let g:ale_fix_on_save = 1
+let g:ale_virtualtext_cursor = 'current'
+
+nmap gn <plug>(ale_next_wrap)
+nmap gp <plug>(ale_previous_wrap)
+call SetupCommandAlias('Afx', 'ALEFix')
 
