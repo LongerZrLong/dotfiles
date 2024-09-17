@@ -44,6 +44,10 @@ set backspace=indent,eol,start
 noremap Q <Nop>
 noremap K <Nop>
 
+" Do the following mapping at start up b/c <C-y> somehow
+" gets overwritten if mapped in the .vimrc
+autocmd VimEnter * nnoremap <C-y> <Nop>
+
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bdelete<Cr>
@@ -91,13 +95,10 @@ vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 " recording
 noremap q <Nop>
-noremap <C-r> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 1) <Bar> endif <Cr>
+noremap <C-q> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 1) <Bar> endif <Cr>
 
-" Do the following mapping at start up b/c <C-y> somehow
-" gets overwritten if mapped in the .vimrc
-autocmd VimEnter * nnoremap <C-y> @q
-
-vnoremap <C-y> :normal! @q<Cr>
+nnoremap <C-r> @q
+vnoremap <C-r> :normal! @q<Cr>
 
 " Toggle mouse support. Useful for scrolling.
 noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> endif <Cr>
@@ -186,7 +187,7 @@ let g:netrw_home=$XDG_STATE_HOME.'/vim'
 
 " colorscheme
 let g:gruvbox_invert_selection=0
-:autocmd VimEnter * hi Search ctermfg=LIGHTGREY ctermbg=DARKGREY
+:autocmd VimEnter * hi Search ctermfg=DARKYELLOW ctermbg=DARKMAGENTA
 
 colorscheme gruvbox
 set background=dark
@@ -195,7 +196,7 @@ set background=dark
 let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
-nnoremap <C-q> :NERDTreeFocus<Cr>
+nnoremap <Leader>n :NERDTreeFocus<Cr>
 nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " easymotion
@@ -260,7 +261,7 @@ call SetupCommandAlias('Grs', 'Git restore')
 
 " ale
 let g:ale_disable_lsp = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor = 'current'
 
 nmap gn <plug>(ale_next_wrap)

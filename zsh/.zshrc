@@ -27,8 +27,9 @@ fi
 # system
 alias fj="fg"
 
-# vim
-alias v="vim"
+# editor
+export EDITOR=vim
+alias e=$EDITOR
 
 # kubectl
 alias kgp="kubectl get pods"
@@ -44,7 +45,7 @@ alias kdp="kubectl describe pods"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias f="fzf"
-alias fv='vim "$(fzf)"'
+alias fe='${EDITOR} "$(fzf)"'
 
 if command -v fd &> /dev/null
 then
