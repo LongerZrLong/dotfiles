@@ -81,6 +81,9 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
+noremap s /
+noremap S ?
+
 nnoremap <Leader>r :noh<Cr>
 nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
 vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
@@ -193,7 +196,8 @@ nnoremap <Leader>n :NERDTreeFocus<Cr>
 nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " easymotion
-map <Leader><Leader> <Plug>(easymotion-prefix)
+map / <Plug>(easymotion-prefix)
+map ? <Plug>(easymotion-s2)
 
 " air-line
 set noshowmode  " air-line will show the mode
