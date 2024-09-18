@@ -45,7 +45,6 @@ alias kdp="kubectl describe pods"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias f="fzf"
-alias fe='${EDITOR} "$(fzf)"'
 
 if command -v fd &> /dev/null
 then
