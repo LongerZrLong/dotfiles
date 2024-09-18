@@ -176,9 +176,6 @@ call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
 
-set foldmethod=indent
-autocmd BufWinEnter * normal zR
-
 " pathogen
 execute pathogen#infect()
 
@@ -204,6 +201,7 @@ map <Leader><Leader> :noh<Cr> <Plug>(easymotion-prefix)
 
 " air-line
 set noshowmode  " air-line will show the mode
+let g:airline_symbols_ascii = 1
 
 " fzf
 let fzf_home = fnamemodify(system('which fzf'), ':h:h')
