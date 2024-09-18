@@ -108,8 +108,8 @@ nnoremap <Leader>j J
 
 " scroll
 set scrolloff=5 " Show a few lines of context around the cursor.
-nnoremap J 5<C-e>
-nnoremap K 5<C-y>
+noremap J 5<C-e>
+noremap K 5<C-y>
 
 " redo
 nnoremap U <C-r>
