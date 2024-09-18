@@ -44,10 +44,6 @@ set backspace=indent,eol,start
 noremap Q <Nop>
 noremap K <Nop>
 
-" Do the following mapping at start up b/c <C-y> somehow
-" gets overwritten if mapped in the .vimrc
-autocmd VimEnter * nnoremap <C-y> <Nop>
-
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bdelete<Cr>
@@ -66,9 +62,6 @@ nnoremap <Leader>7 7gt
 nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 nnoremap <Leader>0 :tablast<Cr>
-
-nnoremap <Leader>h gT<Cr>
-nnoremap <Leader>l gt<Cr>
 
 au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
@@ -95,7 +88,10 @@ vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 " recording
 noremap q <Nop>
-noremap <C-q> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> let @q=strpart(@q, 0, len(@q) - 1) <Bar> endif <Cr>
+
+" Do the following mapping at start up b/c <C-y> somehow
+" gets overwritten if mapped in the .vimrc
+autocmd VimEnter * nnoremap <C-y> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> endif <Cr>
 
 nnoremap <C-r> @q
 vnoremap <C-r> :normal! @q<Cr>
@@ -197,7 +193,7 @@ nnoremap <Leader>n :NERDTreeFocus<Cr>
 nnoremap <Leader>f :NERDTreeFind<Cr>
 
 " easymotion
-map <Leader><Leader> :noh<Cr> <Plug>(easymotion-prefix)
+map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " air-line
 set noshowmode  " air-line will show the mode
@@ -217,6 +213,8 @@ nnoremap <Leader>A :Ag
 " Do to following mapping at start up b/c <C-e> somehow
 " gets overwritten if mapped in vimrc
 autocmd VimEnter * nnoremap <C-e> :Buffers<Cr>
+
+nnoremap <C-q> :Windows<Cr>
 
 " YouCompleteMe
 let g:ycm_python_binary_path = 'python'
