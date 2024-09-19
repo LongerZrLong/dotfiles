@@ -18,18 +18,11 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# load the user specific config if available
-if [ -e ~/.zshrc_extra ]
-then
-    source ~/.zshrc_extra
-fi
-
 # system
 alias fj="fg"
 
 # editor
-export EDITOR=vim
-alias e=$EDITOR
+alias e=vim
 
 # kubectl
 alias kgp="kubectl get pods"
@@ -91,4 +84,14 @@ fi
 
 # bat
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+
+# ====================================================================================================
+# ================================= The following should be at the bottom ============================
+# ====================================================================================================
+
+# load the user specific config if available
+if [ -e ~/.zshrc_extra ]
+then
+    source ~/.zshrc_extra
+fi
 

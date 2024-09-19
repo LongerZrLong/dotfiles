@@ -40,3 +40,6 @@
 [submodule "vim/.vim/bundle/vim-airline"]
 	path = vim/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/.vim/bundle/vim-plug"]
+	path = vim/.vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug.git
