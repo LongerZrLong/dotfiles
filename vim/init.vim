@@ -51,7 +51,8 @@ nnoremap <Leader>K :%bd <Bar> e#<Cr>
 nnoremap <Leader>; <C-^>
 
 " tab
-nnoremap <Leader>t :tabnew<Cr>
+nnoremap t :tabc<Cr>
+nnoremap T :tabo<Cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
@@ -74,6 +75,9 @@ nnoremap <C-w>- <C-w>10-
 nnoremap <C-w>_ <C-w>10+
 nnoremap <C-w>+ <C-w>_
 
+nnoremap s <C-w>v
+nnoremap S <C-w>s
+
 " search
 set ignorecase " case-insensitive search when all characters lowercase
 set smartcase " case-sensitive if containing any capital letters
@@ -81,16 +85,12 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
-noremap s /
-noremap S ?
-
 nnoremap <Leader>r :noh<Cr>
 nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
 vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 " recording
-noremap q <Nop>
 
 " Do the following mapping at start up b/c <C-y> somehow
 " gets overwritten if mapped in the .vimrc
@@ -104,11 +104,17 @@ noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> 
 
 " join
 nnoremap <Leader>j J
+nnoremap <Leader>J gJ
 
 " scroll
 set scrolloff=5 " Show a few lines of context around the cursor.
+
 noremap J 5<C-e>
 noremap K 5<C-y>
+
+noremap <C-f> zt
+noremap <C-b> zb
+noremap <C-g> zz
 
 " redo
 nnoremap U <C-r>
@@ -121,13 +127,12 @@ set expandtab
 noremap <Leader>i =
 
 " write and exit
+nnoremap q :q<Cr>
+nnoremap Q :qa!<Cr>
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>Q :qa!<Cr>
 nnoremap <Leader>w :w<Cr>
 nnoremap <Leader>W :wa<Cr>
-nnoremap <Leader>z :wq<Cr>
-nnoremap <Leader>Z :wqa<Cr>
-nnoremap <Leader>x :q!<Cr>
 
 " copy cut paste
 if has('clipboard')
@@ -171,6 +176,9 @@ noremap <C-s> %
 nnoremap <Leader>m :marks<Cr>
 
 " fold
+noremap f zc
+noremap F zo
+
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
@@ -193,11 +201,13 @@ let g:highlightedyank_highlight_duration = 250
 
 " NERDTree
 nnoremap <Leader>n :NERDTreeFocus<Cr>
-nnoremap <Leader>f :NERDTreeFind<Cr>
+nnoremap <Leader>N :NERDTreeFind<Cr>
+
+autocmd FileType nerdtree map <buffer> <Enter> o <Bar> :NERDTreeToggle <Cr>
 
 " easymotion
-map / <Plug>(easymotion-prefix)
-map ? <Plug>(easymotion-s2)
+map ; <Plug>(easymotion-prefix)
+map ;; <Plug>(easymotion-s2)
 
 " air-line
 set noshowmode  " air-line will show the mode
@@ -225,9 +235,17 @@ let g:ycm_python_binary_path = 'python'
 
 set completeopt-=preview
 let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
-nmap <C-p> <plug>(YCMHover)
+nmap <C-p>i <plug>(YCMHover)
+nmap <C-p><C-i> <plug>(YCMHover)
 
-nnoremap <C-g> :YcmCompleter GoTo<Cr>
+nnoremap <C-p>p :YcmCompleter GoTo<Cr>
+nnoremap <C-p><C-p> :YcmCompleter GoTo<Cr>
+
+nnoremap <C-p>v :vsp<Cr> :YcmCompleter GoTo<Cr>
+nnoremap <C-p><C-v> :vsp<Cr> :YcmCompleter GoTo<Cr>
+
+nnoremap <C-p>h :sp<Cr> :YcmCompleter GoTo<Cr>
+nnoremap <C-p><C-h> :sp<Cr> :YcmCompleter GoTo<Cr>
 
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
