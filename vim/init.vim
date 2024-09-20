@@ -112,6 +112,7 @@ nnoremap <C-r> @q
 vnoremap <C-r> :normal! @q<Cr>
 
 " Toggle mouse support. Useful for scrolling.
+set mouse=
 noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> endif <Cr>
 
 " join
