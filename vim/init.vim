@@ -11,14 +11,21 @@ set noerrorbells visualbell t_vb=
 
 " Color
 
-" You might have to force true color when using regular vim inside tmux as the
-" colorscheme can appear to be grayscale with "termguicolors" option enabled.
-if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (getenv('TERM_PROGRAM') != 'Apple_Terminal')
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
-
-set termguicolors
 
 
 " Turn on syntax highlighting.
@@ -239,12 +246,21 @@ let g:netrw_home=$XDG_STATE_HOME.'/vim'
 
 " colorscheme
 let g:gruvbox_invert_selection=0
-autocmd VimEnter * hi Search ctermfg=DARKYELLOW ctermbg=DARKMAGENTA
-autocmd VimEnter * hi Search cterm=NONE guifg=MAGENTA guibg=YELLOW
+autocmd VimEnter * hi Search guibg=DARKBLUE guifg=DARKYELLOW
 
 colorscheme gruvbox
 set background=dark
 
+let $BAT_THEME='gruvbox-dark'
+
+" set color theme for integrated terminal to dracula 
+" this makes the bat preview have better color
+let g:terminal_ansi_colors = [
+      \ '#21222C', '#FF5555', '#50FA7B', '#F1FA8C',
+      \ '#BD93F9', '#FF79C6', '#8BE9FD', '#F8F8F2',
+      \ '#6272A4', '#FF6E6E', '#69FF94', '#FFFFA5',
+      \ '#D6ACFF', '#FF92DF', '#A4FFFF', '#FFFFFF'
+      \ ]
 
 " vim-surround
 autocmd VimEnter * vnoremap C <plug>VSurround
