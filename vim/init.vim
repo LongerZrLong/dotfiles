@@ -83,7 +83,7 @@ nnoremap <Leader>; <C-^>
 
 
 " tab
-nnoremap t :tabc<Cr>
+nnoremap t :tab split<Cr>
 nnoremap T :tabo<Cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
@@ -124,9 +124,9 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
-nnoremap <Leader>r :noh<Cr>
-nnoremap <Leader>s :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
-vnoremap <Leader>s y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
+nnoremap <Leader>L :noh<Cr>
+nnoremap <Leader>l :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
+vnoremap <Leader>l y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 
@@ -180,6 +180,10 @@ nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>Q :qa!<Cr>
 nnoremap <Leader>w :w<Cr>
 nnoremap <Leader>W :wa<Cr>
+
+
+" insert mode
+inoremap <C-d> <Del>
 
 
 " copy cut paste
@@ -253,7 +257,7 @@ set background=dark
 
 let $BAT_THEME='gruvbox-dark'
 
-" set color theme for integrated terminal to dracula 
+" set color theme for integrated terminal to dracula
 " this makes the bat preview have better color
 let g:terminal_ansi_colors = [
       \ '#21222C', '#FF5555', '#50FA7B', '#F1FA8C',
@@ -296,13 +300,18 @@ nnoremap <Leader>a :Agc <C-r><C-w><Cr>
 vnoremap <Leader>a y:Agc <C-r>=@"<Cr><Cr>
 nnoremap <Leader>A :Ag 
 
+command! -bang -nargs=* BLinesc call fzf#vim#grep('ag --nogroup --column --filename --color -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* BLinesclc call fzf#vim#grep('ag --nogroup --column --filename --color --literal --case-sensitive -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
+nnoremap <Leader>s :BLinesclc <C-r><C-w><Cr>
+vnoremap <Leader>s y:BLinesclc <C-r>=@"<Cr><Cr>
+nnoremap <Leader>S :BLinesc<Cr>
+
 nnoremap <C-p><C-f> :Files<Cr>
 nnoremap <C-p><C-a> :GFiles<Cr>
 nnoremap <C-p><C-u> :GFiles?<Cr>
 nnoremap <C-p><C-e> :Buffers<Cr>
-nnoremap <C-p><C-j> :BLines<Cr>
-nnoremap <C-p><C-k> :Lines<Cr>
-nnoremap <C-p><C-m> :Jumps<Cr>
+nnoremap <C-p><C-k> :BLinesc<Cr>
+nnoremap <C-p><C-j> :Jumps<Cr>
 nnoremap <C-p><C-w> :Windows<Cr>
 nnoremap <C-p><C-r> :History<Cr>
 nnoremap <C-p><C-i> :History:<Cr>
