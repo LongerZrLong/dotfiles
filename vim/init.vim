@@ -233,8 +233,8 @@ nnoremap <Leader>m :marks<Cr>
 
 
 " fold
-noremap f zc
-noremap F zo
+nnoremap f zc
+nnoremap F zo
 
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
