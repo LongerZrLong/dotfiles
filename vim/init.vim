@@ -175,6 +175,7 @@ noremap <Leader>i =
 
 " write and exit
 nnoremap q :q<Cr>
+nnoremap <C-q> :q!<Cr>
 nnoremap Q :qa!<Cr>
 nnoremap <Leader>q :q<Cr>
 nnoremap <Leader>Q :qa!<Cr>
@@ -308,17 +309,18 @@ nnoremap <Leader>S :BLinesc<Cr>
 
 nnoremap <C-p><C-f> :Files<Cr>
 nnoremap <C-p><C-a> :GFiles<Cr>
-nnoremap <C-p><C-u> :GFiles?<Cr>
+nnoremap <C-p><C-d> :GFiles?<Cr>
 nnoremap <C-p><C-e> :Buffers<Cr>
-nnoremap <C-p><C-k> :BLinesc<Cr>
-nnoremap <C-p><C-j> :Jumps<Cr>
+nnoremap <C-p><C-l> :BLinesc<Cr>
+nnoremap <C-p><C-o> :Jumps<Cr>
 nnoremap <C-p><C-w> :Windows<Cr>
 nnoremap <C-p><C-r> :History<Cr>
 nnoremap <C-p><C-i> :History:<Cr>
-nnoremap <C-p><C-q> :History/<Cr>
-nnoremap <C-p><C-s> :Snippets<Cr>
+nnoremap <C-p><C-s> :History/<Cr>
+nnoremap <C-p><C-u> :Snippets<Cr>
 nnoremap <C-p><C-g> :Commits<Cr>
 nnoremap <C-p><C-h> :BCommits<Cr>
+nnoremap <C-p><C-m> :Marks<Cr>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
