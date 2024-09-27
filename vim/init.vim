@@ -197,6 +197,8 @@ if has('clipboard')
   nnoremap <Leader>P "+gP
   vnoremap <Leader>p "+gp
   vnoremap <Leader>P "+gP
+
+  call SetupCommandAlias("cpa", "%y+")
 else
   echo "Install vim-gtk or other similar packages for the clipboard feature."
 endif
