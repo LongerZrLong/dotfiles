@@ -158,7 +158,7 @@ noremap K 5<C-y>
 
 noremap <C-f> zt
 noremap <C-b> zb
-noremap <C-g> zz
+noremap <C-n> zz
 
 
 " redo
@@ -294,6 +294,10 @@ set noshowmode  " air-line will show the mode
 let g:airline_symbols_ascii = 1
 
 
+" repeat
+nmap U <Plug>(RepeatRedo)
+
+
 " fzf
 let fzf_home = fnamemodify(system('which fzf'), ':h:h')
 let &runtimepath .= ','.fzf_home
@@ -343,7 +347,7 @@ let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
 " gets overwritten if mapped in vimrc
 autocmd VimEnter * nmap <C-e> <plug>(YCMHover)
 
-nnoremap <C-n> :YcmCompleter GoTo<Cr>
+nnoremap <C-g> :YcmCompleter GoTo<Cr>
 
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
