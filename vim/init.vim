@@ -83,8 +83,8 @@ nnoremap <Leader>; <C-^>
 
 
 " tab
-nnoremap t :tab split<Cr>
-nnoremap T :tabo<Cr>
+nnoremap <Leader>t :tab split<Cr>
+nnoremap <Leader>T :tabo<Cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
@@ -233,10 +233,6 @@ noremap <C-s> %
 " marks
 nnoremap <Leader>m :marks<Cr>
 
-
-" fold
-nnoremap f zc
-nnoremap F zo
 
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
