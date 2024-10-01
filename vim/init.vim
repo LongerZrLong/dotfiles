@@ -304,16 +304,16 @@ vnoremap <Leader>a y:Agc <C-r>=@"<Cr><Cr>
 nnoremap <Leader>A :Ag 
 
 command! -bang -nargs=* BLinesc call fzf#vim#grep('ag --nogroup --column --filename --color -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* BLinesclc call fzf#vim#grep('ag --nogroup --column --filename --color --literal --case-sensitive -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
-nnoremap <Leader>s :BLinesclc <C-r><C-w><Cr>
-vnoremap <Leader>s y:BLinesclc <C-r>=@"<Cr><Cr>
+command! -bang -nargs=* BLinescLC call fzf#vim#grep('ag --nogroup --column --filename --color --literal --case-sensitive -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
+nnoremap <Leader>s :BLinescLC <C-r><C-w><Cr>
+vnoremap <Leader>s y:BLinescLC <C-r>=@"<Cr><Cr>
 nnoremap <Leader>S :BLinesc<Cr>
 
 nnoremap <C-p><C-f> :Files<Cr>
 nnoremap <C-p><C-a> :GFiles<Cr>
 nnoremap <C-p><C-d> :GFiles?<Cr>
 nnoremap <C-p><C-e> :Buffers<Cr>
-nnoremap <C-p><C-l> :BLinesc<Cr>
+nnoremap <C-p><C-l> :call fzf#vim#buffer_lines({'options': '--no-preview'})<Cr>
 nnoremap <C-p><C-o> :Jumps<Cr>
 nnoremap <C-p><C-w> :Windows<Cr>
 nnoremap <C-p><C-r> :History<Cr>
