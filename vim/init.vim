@@ -73,6 +73,8 @@ set backspace=indent,eol,start
 noremap Q <Nop>
 noremap K <Nop>
 map <C-q> <Nop>
+map <C-r> <Nop>
+autocmd VimEnter * nnoremap <C-y> <Nop>
 
 
 " buffer
@@ -124,6 +126,7 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
+nnoremap <C-r> :set hlsearch<Cr>
 nnoremap <Leader>L :noh<Cr>
 nnoremap <Leader>l :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
 vnoremap <Leader>l y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
@@ -134,10 +137,10 @@ vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 " Do the following mapping at start up b/c <C-y> somehow
 " gets overwritten if mapped in the .vimrc
-autocmd VimEnter * nnoremap <C-y> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> endif <Cr>
+nnoremap <C-q> :if reg_recording() == '' <Bar> exe 'normal! qq' <Bar> else <Bar> exe 'normal! q' <Bar> endif <Cr>
 
-nnoremap <C-r> @q
-vnoremap <C-r> :normal! @q<Cr>
+nnoremap q @q
+vnoremap q :normal! @q<Cr>
 
 
 " Toggle mouse support. Useful for scrolling.
@@ -174,10 +177,8 @@ noremap <Leader>i =
 
 
 " write and exit
-nnoremap q :q<Cr>
-nnoremap <C-q> :q!<Cr>
-nnoremap Q :qa!<Cr>
 nnoremap <Leader>q :q<Cr>
+nnoremap Q :q!<Cr>
 nnoremap <Leader>Q :qa!<Cr>
 nnoremap <Leader>w :w<Cr>
 nnoremap <Leader>W :wa<Cr>
@@ -230,10 +231,7 @@ noremap <C-k> 5k
 noremap <C-s> %
 
 
-" marks
-nnoremap <Leader>m :marks<Cr>
-
-
+" fold
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
