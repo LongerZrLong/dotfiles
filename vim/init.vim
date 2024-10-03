@@ -79,7 +79,7 @@ autocmd VimEnter * nnoremap <C-y> <Nop>
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
-nnoremap <Leader>k :bdelete<Cr>
+nnoremap <Leader>k :bp<Cr>:bd #<Cr>
 nnoremap <Leader>K :%bd <Bar> e#<Cr>
 nnoremap <Leader>; <C-^>
 
