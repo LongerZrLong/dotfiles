@@ -86,7 +86,7 @@ nnoremap <Leader>; <C-^>
 
 " tab
 nnoremap <Leader>t :tab split<Cr>
-nnoremap <Leader>T :tabo<Cr>
+nnoremap <Leader>T :tabc<Cr>
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
 nnoremap <Leader>3 3gt
