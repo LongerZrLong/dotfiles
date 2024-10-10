@@ -272,8 +272,8 @@ let g:highlightedyank_highlight_duration = 250
 
 
 " NERDTree
-nnoremap <Leader>n :NERDTreeFocus<Cr>
-nnoremap <Leader>N :NERDTreeFind<Cr>
+nnoremap <Leader>f :NERDTreeFocus<Cr>
+nnoremap <Leader>F :NERDTreeFind<Cr>
 
 autocmd FileType nerdtree map <buffer> <Enter> o <Bar> :NERDTreeToggle <Cr>
 
