@@ -77,6 +77,10 @@ map <C-r> <Nop>
 autocmd VimEnter * nnoremap <C-y> <Nop>
 
 
+" jump
+" ' originally jumps the the start of the line that has the mark
+noremap ' `
+
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bp<Cr>:bd #<Cr>
