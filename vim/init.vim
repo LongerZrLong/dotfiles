@@ -84,7 +84,7 @@ noremap ' `
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bp<Cr>:bd #<Cr>
-nnoremap <Leader>K :%bd <Bar> e#<Cr>
+nnoremap <Leader>K m0 <Bar> :%bd <Bar> e# <Cr> `0
 nnoremap <Leader>; <C-^>
 
 
