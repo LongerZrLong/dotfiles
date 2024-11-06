@@ -169,7 +169,7 @@ noremap <C-n> zz
 
 
 " redo
-nnoremap U <C-r>
+autocmd VimEnter * nnoremap U :redo<Cr>
 
 
 " indent
