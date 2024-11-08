@@ -361,6 +361,7 @@ let g:ycm_enable_diagnostic_highlighting = 0
 
 " vim-fugitive
 nnoremap <Leader>g :Git<Cr>
+nnoremap <Leader>G :GcLog<Cr>
 nnoremap <Leader>c :Gvdiffsplit<Cr>
 nnoremap <Leader>C :Gvdiffsplit HEAD<Cr>
 nnoremap <Leader>b :Git blame<Cr>
