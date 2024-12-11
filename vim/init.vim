@@ -85,7 +85,7 @@ noremap ' `
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
 nnoremap <Leader>k :bp<Cr>:bd #<Cr>
 nnoremap <Leader>K m0 <Bar> :%bd <Bar> e# <Cr> `0
-nnoremap <Leader>; <C-^>
+nnoremap <Leader>e <C-^>
 
 
 " tab
@@ -283,8 +283,8 @@ autocmd FileType nerdtree map <buffer> <Enter> o <Bar> :NERDTreeToggle <Cr>
 
 
 " easymotion
-map ; <Plug>(easymotion-prefix)
-map ;; <Plug>(easymotion-s2)
+" map ; <Plug>(easymotion-prefix)
+map <Leader>; <Plug>(easymotion-s2)
 
 
 " air-line
