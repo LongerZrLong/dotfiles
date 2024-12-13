@@ -102,7 +102,7 @@ nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 nnoremap <Leader>0 :tablast<Cr>
 
-au TabLeave * let g:lasttab = tabpagenr()
+autocmd TabLeave * let g:lasttab = tabpagenr()
 nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
 
 
@@ -239,6 +239,9 @@ noremap <C-s> %
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
+
+" set default foldmethod to indent and open all the folds
+autocmd BufWinEnter * setlocal foldmethod=indent | silent! :%foldopen!
 
 
 " pathogen
