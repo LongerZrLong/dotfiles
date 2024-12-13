@@ -102,7 +102,7 @@ nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 nnoremap <Leader>0 :tablast<Cr>
 
-au TabLeave * let g:lasttab = tabpagenr()
+autocmd TabLeave * let g:lasttab = tabpagenr()
 nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
 
 
@@ -224,7 +224,9 @@ set ttimeout
 set ttimeoutlen=1
 set ttyfast
 
-autocmd InsertEnter,InsertLeave * set cul!
+autocmd InsertEnter,InsertLeave * set cursorline!
+
+nnoremap <Leader>v :set cursorcolumn!<Cr>
 
 
 " cursor movement
@@ -239,6 +241,9 @@ noremap <C-s> %
 call SetupCommandAlias('fm', 'setlocal foldmethod=manual')
 call SetupCommandAlias('fi', 'setlocal foldmethod=indent')
 call SetupCommandAlias('fs', 'setlocal foldmethod=syntax')
+
+" set default foldmethod to indent and open all the folds
+" autocmd BufWinEnter * setlocal foldmethod=indent | silent! :%foldopen!
 
 
 " pathogen
