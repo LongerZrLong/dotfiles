@@ -111,8 +111,7 @@ nnoremap <C-w>; <C-w>p
 nnoremap <C-w>> <C-w>20>
 nnoremap <C-w>< <C-w>20<
 nnoremap <C-w>- <C-w>10-
-nnoremap <C-w>_ <C-w>10+
-nnoremap <C-w>+ <C-w>_
+nnoremap <C-w>+ <C-w>10+
 
 nnoremap s <C-w>v
 nnoremap S <C-w>s
