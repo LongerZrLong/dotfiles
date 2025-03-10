@@ -48,6 +48,14 @@ fun! SetupCommandAlias(from, to)
 endfun
 
 
+" a function to blink the line for duration ms
+function! BlinkLine(duration=500)
+    let lnum = line('.')
+    let match_id = matchadd('Visual', '\%' . lnum . 'l', 100)
+    call timer_start(a:duration, {-> matchdelete(match_id)})
+endfunction
+
+
 " leader key
 nnoremap <SPACE> <Nop>
 let mapleader=' '
@@ -80,6 +88,9 @@ autocmd VimEnter * nnoremap <C-y> <Nop>
 " jump
 " ' originally jumps the the start of the line that has the mark
 noremap ' `
+
+nnoremap <C-o> <C-o>:call BlinkLine()<Cr>
+nnoremap <C-i> <C-i>:call BlinkLine()<Cr>
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
@@ -129,6 +140,9 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
+nnoremap n n:call BlinkLine(250)<Cr>
+nnoremap N N:call BlinkLine(250)<Cr>
+
 nnoremap <C-r> :set hlsearch<Cr>
 nnoremap <Leader>L :noh<Cr>
 nnoremap <Leader>l :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
@@ -162,9 +176,9 @@ set scrolloff=5 " Show a few lines of context around the cursor.
 noremap J 5<C-e>
 noremap K 5<C-y>
 
-noremap <C-f> zt
-noremap <C-b> zb
-noremap <C-n> zz
+noremap <C-f> zt:call BlinkLine()<Cr>
+noremap <C-b> zb:call BlinkLine()<Cr>
+noremap <C-n> zz:call BlinkLine()<Cr>
 
 
 " redo
@@ -349,7 +363,7 @@ let g:ycm_auto_hover = '' " If set to empty string, popup is not auto displayed
 " gets overwritten if mapped in vimrc
 autocmd VimEnter * nmap <C-e> <plug>(YCMHover)
 
-nnoremap <C-g> :YcmCompleter GoTo<Cr>
+nnoremap <C-g> :YcmCompleter GoTo<Cr>:call BlinkLine()<Cr>
 
 let g:ycm_key_list_select_completion = ['<Tab>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
