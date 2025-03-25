@@ -399,11 +399,12 @@ call SetupCommandAlias('Grs', 'Git restore')
 
 
 " ale
-let g:ale_disable_lsp = 1
+let g:ale_disable_lsp = 0
 let g:ale_fix_on_save = 0
 let g:ale_virtualtext_cursor = 'current'
 
 nmap gn <plug>(ale_next_wrap)
 nmap gp <plug>(ale_previous_wrap)
 call SetupCommandAlias('Afx', 'ALEFix')
+call SetupCommandAlias('Aim', 'ALEImport')
 
