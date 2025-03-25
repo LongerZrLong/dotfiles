@@ -56,11 +56,6 @@ function! BlinkLine(duration=500)
 endfunction
 
 
-" leader key
-nnoremap <SPACE> <Nop>
-let mapleader=' '
-
-
 " Line numbers
 set number
 set relativenumber
@@ -76,13 +71,23 @@ set laststatus=2
 " backspace over anything.
 set backspace=indent,eol,start
 
-
-" unbind useless
+" ============================================================================
+" unbind useless (all other mappings should be under this unbind block)
+" ============================================================================
 noremap Q <Nop>
 noremap K <Nop>
 map <C-q> <Nop>
 map <C-r> <Nop>
 autocmd VimEnter * nnoremap <C-y> <Nop>
+
+
+" leader key
+nnoremap <SPACE> <Nop>
+let mapleader=' '
+
+
+" blink
+nnoremap <C-r> :call BlinkLine()<Cr>
 
 
 " jump
@@ -91,6 +96,7 @@ noremap ' `
 
 nnoremap <C-o> <C-o>:call BlinkLine()<Cr>
 nnoremap <C-i> <C-i>:call BlinkLine()<Cr>
+
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
@@ -132,7 +138,6 @@ vnoremap s <C-w>vgv
 " b/c vim-surround overwrites S
 autocmd VimEnter * vnoremap S <C-w>sgv
 
-
 " search
 set ignorecase " case-insensitive search when all characters lowercase
 set smartcase " case-sensitive if containing any capital letters
@@ -140,10 +145,11 @@ set smartcase " case-sensitive if containing any capital letters
 set incsearch
 set hlsearch
 
+call SetupCommandAlias('Hls', 'set hlsearch')
+
 nnoremap n n:call BlinkLine(250)<Cr>
 nnoremap N N:call BlinkLine(250)<Cr>
 
-nnoremap <C-r> :set hlsearch<Cr>
 nnoremap <Leader>L :noh<Cr>
 nnoremap <Leader>l :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
 vnoremap <Leader>l y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
@@ -301,7 +307,7 @@ autocmd FileType nerdtree map <buffer> <Enter> o <Bar> :NERDTreeToggle <Cr>
 
 
 " easymotion
-" map ; <Plug>(easymotion-prefix)
+" Note: easymotion-prefix is default to <Leader><Leader>
 map <Leader>; <Plug>(easymotion-s2)
 
 
