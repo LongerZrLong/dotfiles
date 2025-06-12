@@ -90,6 +90,10 @@ let mapleader=' '
 nnoremap <C-r> :call BlinkLine()<Cr>
 
 
+" wrap
+nnoremap <Leader>r :set wrap!<Cr>
+
+
 " jump
 " ' originally jumps the the start of the line that has the mark
 noremap ' `
