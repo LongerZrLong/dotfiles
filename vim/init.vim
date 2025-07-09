@@ -91,7 +91,7 @@ nnoremap <C-r> :call BlinkLine()<Cr>
 
 
 " wrap
-nnoremap <Leader>r :set wrap!<Cr>
+call SetupCommandAlias('wr' , 'set wrap!')
 
 
 " jump
@@ -104,8 +104,8 @@ nnoremap <C-i> <C-i>:call BlinkLine()<Cr>
 
 " buffer
 set hidden " By default, Vim doesn't let you hide a buffer that has unsaved changes.
-nnoremap <Leader>k :bp<Cr>:bd #<Cr>
-nnoremap <Leader>K m0 <Bar> :%bd <Bar> e# <Cr> `0
+nnoremap <Leader>r :bp<Cr>:bd #<Cr>
+nnoremap <Leader>R m0 <Bar> :%bd <Bar> e# <Cr> `0
 nnoremap <Leader>e <C-^>
 
 
@@ -154,9 +154,9 @@ call SetupCommandAlias('Hls', 'set hlsearch')
 nnoremap n n:call BlinkLine(250)<Cr>
 nnoremap N N:call BlinkLine(250)<Cr>
 
-nnoremap <Leader>L :noh<Cr>
-nnoremap <Leader>l :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
-vnoremap <Leader>l y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
+nnoremap <Leader>D :noh<Cr>
+nnoremap <Leader>d :let @/='\C\<'.expand('<cword>').'\>'<Bar>set hlsearch<Cr>
+vnoremap <Leader>d y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 vnoremap / y:let @/='\C\V'.escape(@", '/\')<Bar>set hlsearch<Cr>
 
 
@@ -176,15 +176,15 @@ noremap ` :if &mouse == 'a' <Bar> set mouse= <Bar> else <Bar> set mouse=a <Bar> 
 
 
 " join
-nnoremap <Leader>j J
-nnoremap <Leader>J gJ
+nnoremap <Leader>h J
+nnoremap <Leader>H gJ
 
 
 " scroll
 set scrolloff=5 " Show a few lines of context around the cursor.
 
-noremap J 5<C-e>
-noremap K 5<C-y>
+noremap <C-j> 5<C-e>
+noremap <C-k> 5<C-y>
 
 noremap <C-f> zt:call BlinkLine()<Cr>
 noremap <C-b> zb:call BlinkLine()<Cr>
@@ -253,10 +253,8 @@ nnoremap <Leader>v :set cursorcolumn!<Cr>
 
 
 " cursor movement
-noremap <C-h> ^
-noremap <C-l> $
-noremap <C-j> 5j
-noremap <C-k> 5k
+noremap K ^
+noremap J $
 noremap <C-s> %
 
 
@@ -312,7 +310,18 @@ autocmd FileType nerdtree map <buffer> <Enter> o <Bar> :NERDTreeToggle <Cr>
 
 " easymotion
 " Note: easymotion-prefix is default to <Leader><Leader>
+" Uncomment the following line to disable easymotion
+" autocmd VimEnter * map <Leader><Leader> <Nop>
+
+map <Leader>j <Plug>(easymotion-lineforward)
+map <Leader>k <Plug>(easymotion-linebackward)
+
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
 map <Leader>; <Plug>(easymotion-s2)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 
 " air-line
@@ -343,7 +352,6 @@ nnoremap <C-p><C-f> :Files<Cr>
 nnoremap <C-p><C-a> :GFiles<Cr>
 nnoremap <C-p><C-d> :GFiles?<Cr>
 nnoremap <C-p><C-e> :Buffers<Cr>
-nnoremap <C-p><C-l> :call fzf#vim#buffer_lines({'options': '--no-preview'})<Cr>
 nnoremap <C-p><C-o> :Jumps<Cr>
 nnoremap <C-p><C-w> :Windows<Cr>
 nnoremap <C-p><C-r> :History<Cr>
