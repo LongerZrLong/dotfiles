@@ -142,6 +142,7 @@ vnoremap s <C-w>vgv
 " b/c vim-surround overwrites S
 autocmd VimEnter * vnoremap S <C-w>sgv
 
+
 " search
 set ignorecase " case-insensitive search when all characters lowercase
 set smartcase " case-sensitive if containing any capital letters

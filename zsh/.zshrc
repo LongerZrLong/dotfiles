@@ -104,6 +104,15 @@ fi
 # bat
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 
+# trash
+if command -v trash &> /dev/null
+then
+    # using trash instead of rm
+    alias rm='trash'
+else
+    echo "Install trash-cli for safe rm behavior"
+fi
+
 # ====================================================================================================
 # ================================= The following should be at the bottom ============================
 # ====================================================================================================
