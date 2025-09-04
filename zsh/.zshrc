@@ -53,6 +53,14 @@ alias kdp="kubectl describe pods"
 # kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
+# bat
+if command -v bat &> /dev/null
+then
+    alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+else
+    echo "Install bat for better syntax highlighting"
+fi
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -100,9 +108,6 @@ then
 else
     echo "Install eza for better ls experience."
 fi
-
-# bat
-alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 
 # trash
 if command -v trash &> /dev/null
