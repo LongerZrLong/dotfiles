@@ -338,10 +338,10 @@ nmap U <Plug>(RepeatRedo)
 let fzf_home = fnamemodify(system('which fzf'), ':h:h')
 let &runtimepath .= ','.fzf_home
 
-command! -bang -nargs=* Agc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
-nnoremap <Leader>a :Agc <C-r><C-w><Cr>
-vnoremap <Leader>a y:Agc <C-r>=@"<Cr><Cr>
-nnoremap <Leader>A :Ag 
+command! -bang -nargs=* Al call fzf#vim#ag(<q-args>, '--literal', fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* Alc call fzf#vim#ag(<q-args>, '--literal --case-sensitive', fzf#vim#with_preview(), <bang>0)
+nnoremap <Leader>a :Alc <C-r><C-w><Cr>
+vnoremap <Leader>a y:Alc <C-r>=@"<Cr><Cr>
 
 command! -bang -nargs=* BLinesc call fzf#vim#grep('ag --nogroup --column --filename --color -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
 command! -bang -nargs=* BLinescLC call fzf#vim#grep('ag --nogroup --column --filename --color --literal --case-sensitive -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
