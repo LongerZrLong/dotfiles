@@ -123,6 +123,9 @@ nnoremap <Leader>8 8gt
 nnoremap <Leader>9 9gt
 nnoremap <Leader>0 :tablast<Cr>
 
+nnoremap <Leader>] gt
+nnoremap <Leader>[ gT
+
 autocmd TabLeave * let g:lasttab = tabpagenr()
 nnoremap <silent> <Leader><Tab> :exe 'tabn '.g:lasttab<Cr>
 
