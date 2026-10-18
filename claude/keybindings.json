@@ -1,0 +1,16 @@
+{
+  "bindings": [
+    {
+      "context": "Scroll",
+      "bindings": {
+        "meta+k": "scroll:lineUp",
+        "meta+j": "scroll:lineDown",
+        "meta+u": "scroll:halfPageUp",
+        "meta+d": "scroll:halfPageDown",
+        "meta+g": "scroll:top",
+        "meta+shift+g": "scroll:bottom"
+      }
+    }
+  ]
+}
+
