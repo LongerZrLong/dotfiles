@@ -1,0 +1,15 @@
+{
+  "description": "Swap Left Control and Left Option",
+  "manipulators": [
+    {
+      "type": "basic",
+      "from": { "key_code": "left_control", "modifiers": { "optional": ["any"] } },
+      "to": [{ "key_code": "left_option" }]
+    },
+    {
+      "type": "basic",
+      "from": { "key_code": "left_option", "modifiers": { "optional": ["any"] } },
+      "to": [{ "key_code": "left_control" }]
+    }
+  ]
+}
