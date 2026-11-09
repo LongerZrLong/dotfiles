@@ -350,7 +350,6 @@ command! -bang -nargs=* BLinesc call fzf#vim#grep('ag --nogroup --column --filen
 command! -bang -nargs=* BLinescLC call fzf#vim#grep('ag --nogroup --column --filename --color --literal --case-sensitive -- '.shellescape(empty(<q-args>) ? '^(?=.)' : <q-args>) .. ' ' .. shellescape(expand('%')) .. ' /dev/null 2>/dev/null', fzf#vim#with_preview(), <bang>0)
 nnoremap <Leader>s :BLinescLC <C-r><C-w><Cr>
 vnoremap <Leader>s y:BLinescLC <C-r>=@"<Cr><Cr>
-nnoremap <Leader>S :BLinesc<Cr>
 
 nnoremap <C-p><C-f> :Files<Cr>
 nnoremap <C-p><C-a> :GFiles<Cr>
@@ -365,6 +364,7 @@ nnoremap <C-p><C-u> :Snippets<Cr>
 nnoremap <C-p><C-g> :Commits<Cr>
 nnoremap <C-p><C-h> :BCommits<Cr>
 nnoremap <C-p><C-m> :Marks<Cr>
+nnoremap <C-p><C-l> :BLinesc<Cr>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
